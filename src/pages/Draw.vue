@@ -4,10 +4,12 @@
       <div class="button-group">
         <app-button
           class="btn btn__primary margin-right20"
+          :class="{active: isActive('pencil')}"
           buttonType="button"
           @click="pencil">Pencil</app-button>
         <app-button
           class="btn btn__primary"
+          :class="{active: isActive('eraser')}"
           buttonType="button"
           @click="eraser">Eraser</app-button>
       </div>
@@ -36,6 +38,11 @@ import Canvas from '../components/Canvas.vue';
 
 export default {
   name: 'draw',
+  data() {
+    return {
+      active: 'pencil',
+    };
+  },
   computed: {
     draw: {
       get() {
@@ -69,14 +76,22 @@ export default {
     },
   },
   methods: {
+    /**
+     * change btn status
+     */
+    isActive(value) {
+      return this.active === value;
+    },
 
     /**
      * tools functionality  (pencil, eraser, clear canvas)
      */
     pencil() {
+      this.active = 'pencil';
       this.tool = '#df4b26';
     },
     eraser() {
+      this.active = 'eraser';
       this.tool = '#EEE';
     },
     clear() {

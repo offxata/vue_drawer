@@ -9,10 +9,14 @@
 
 .btn__primary {
   color: #FFF;
-  background: #1D79D2;
+  background: #4a97e3;
   &:hover {
-    background: #4a97e3;
+    background: #67aaec;
     transition: .3s background; 
+  }
+  &.active {
+    cursor: default;
+    background: #1D79D2;
   }
 }
 
